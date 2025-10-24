@@ -1,0 +1,62 @@
+/* aquí le vas a dar un color de fondo y un color al borde */
+:root {
+    --background: rgb(19, 9, 0);
+    --dark: rgb(241, 231, 234);
+  }
+  
+  /* estilo para toda la página */
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* calcula las medidas del elemento */
+  }
+  
+  .contenedor {
+    background: var(--background); /* te crea una variable para el color de fondo que toma el color del :root que declaraste al principio, si quieres cambiarlo luego solo es necesario cambiarlo en el root */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .box-liquid {
+    position: relative;
+    background: var(--background); /* esta variable tomará el color que hayas declarado en el root en la variable --dark */
+    border: 0.25rem solid var(--dark);
+    width: 100%;
+    height: 20rem;
+    outline: 0;
+    overflow: hidden;
+  }
+  
+  .box-liquid:before {
+    content: url('hasbulla.jpeg');
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .box-liquid::after {
+    content: "";
+    position: absolute;
+    background: var(--background);
+    height: 200%;
+    width: 200%;
+    bottom: -50%;
+    left: -50%;
+    border-radius: 40%;
+    animation: spin 10s ease-out infinite;
+  }
+  
+  /* keyframes define los pasos que seguirá un elemento durante la animación 
+     en este caso en el plano cartesiano se moverá en sentido de las Y */
+  @keyframes spin {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(-100%) rotate(-500deg);
+    }
+  }
+    
